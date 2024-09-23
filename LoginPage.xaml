@@ -1,0 +1,100 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoDesarrolloMovil.LoginPage"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15" VerticalOptions="CenterAndExpand">
+
+            <!-- Logo -->
+            <Image Source="dotnet_bot.png" HorizontalOptions="Center" WidthRequest="150" HeightRequest="150" />
+
+            <!-- Nombre de la Farmacia -->
+            <Label Text="Farmacia Salud" 
+                   FontSize="Large" 
+                   HorizontalOptions="Center" 
+                   TextColor="Black" />
+
+            <!-- Campo de Nombre de Usuario -->
+            <Entry x:Name="usernameEntry" 
+                   Placeholder="Nombre de Usuario" 
+                   Keyboard="Default"
+                   FontSize="Medium" 
+                   TextColor="Black"
+                   BackgroundColor="LightGray"
+                   HorizontalOptions="FillAndExpand" />
+
+            <!-- Campo de Contraseña -->
+            <Grid>
+                <Entry x:Name="passwordEntry" 
+                       Placeholder="Contraseña"
+                       IsPassword="True" 
+                       FontSize="Medium"
+                       TextColor="Black"
+                       BackgroundColor="LightGray"
+                       HorizontalOptions="FillAndExpand" />
+
+                <!-- Icono para mostrar/ocultar contraseña -->
+                <ImageButton x:Name="showPasswordIcon"
+                             Source="eye_icon.png" 
+                             WidthRequest="30" 
+                             HeightRequest="30"
+                             VerticalOptions="Center" 
+                             HorizontalOptions="End"
+                             Clicked="OnShowPasswordClicked" />
+            </Grid>
+
+            <!-- Botón Iniciar Sesión -->
+            <Button Text="Iniciar Sesión"
+                    BackgroundColor="LightBlue"
+                    TextColor="Black"
+                    FontSize="Medium"
+                    Clicked="OnLoginClicked"
+                    HorizontalOptions="FillAndExpand" />
+
+            <!-- Etiquetas inferiores -->
+            <Grid>
+                <!-- �No tienes una cuenta? Reg�strate -->
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="¿No tienes una cuenta? " />
+                            <Span Text="Regístrate" TextColor="Navy" TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnRegisterTapped" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <!-- Icono -->
+                <Image Source="register_icon.png"
+                       WidthRequest="20" 
+                       HeightRequest="20"
+                       VerticalOptions="Center" />
+
+                <!-- Enlace de privacidad -->
+                <Label HorizontalOptions="EndAndExpand">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Privacidad" TextColor="Navy" TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnPrivacyTapped" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <!-- Icono -->
+                <Image Source="privacy_icon.png"
+                       WidthRequest="20" 
+                       HeightRequest="20"
+                       VerticalOptions="Center"
+                       HorizontalOptions="End" />
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
