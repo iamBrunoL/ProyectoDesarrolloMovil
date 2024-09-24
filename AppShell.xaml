@@ -13,6 +13,7 @@
         Route="LoginPage" />
     <ShellContent Title="Panel de Control" ContentTemplate="{DataTemplate local:PanelControlPage}" />
     <ShellContent Title="Mis Datos" ContentTemplate="{DataTemplate local:MisDatosPage}" />
+    <ShellContent Title="Editar Mis Datos" ContentTemplate="{DataTemplate local:ActualizacionMisDatosPage}" />
 
 
 </Shell>

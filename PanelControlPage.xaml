@@ -4,57 +4,62 @@
              x:Class="ProyectoDesarrolloMovil.PanelControlPage"
              BackgroundColor="White">
 
-    <Grid>
-        <ScrollView>
-            <VerticalStackLayout Padding="20" Spacing="20">
-                <!-- Frase "Hola [nombre del usuario]" -->
-                <Label>
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Hola " FontSize="Large" />
-                            <Span Text="{Binding UserName}" TextColor="Navy" FontAttributes="Bold" FontSize="Large" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                    <Label.FontSize>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="22" Tablet="28" />
-                    </Label.FontSize>
-                    <Label.HorizontalOptions>
-                        Center
-                    </Label.HorizontalOptions>
-                </Label>
+	<Grid>
+		<ScrollView>
+			<VerticalStackLayout Padding="20" Spacing="20">
+				<!-- Frase "Hola [nombre del usuario]" -->
+				<Label>
+					<Label.FormattedText>
+						<FormattedString>
+							<Span Text="Hola " FontSize="Large" />
+							<Span Text="{Binding UserName}" TextColor="Navy" FontAttributes="Bold" FontSize="Large" />
+						</FormattedString>
+					</Label.FormattedText>
+					<Label.FontSize>
+						<OnIdiom x:TypeArguments="x:Double" Phone="22" Tablet="28" />
+					</Label.FontSize>
+					<Label.HorizontalOptions>
+						Center
+					</Label.HorizontalOptions>
+				</Label>
 
-                <!-- Campo de búsqueda -->
-                <SearchBar x:Name="searchBar" 
+				<!-- Campo de búsqueda -->
+				<SearchBar x:Name="searchBar"
                            Placeholder="Busca una opción"
                            TextChanged="OnSearchTextChanged"
                            FontSize="Medium"
                            BackgroundColor="LightGray"
                            HorizontalOptions="FillAndExpand" />
 
-                <!-- Lista de Opciones -->
-                <CollectionView x:Name="optionsList" 
+				<!-- Lista de Opciones -->
+				<CollectionView x:Name="optionsList"
                                 ItemsSource="{Binding FilteredOptions}"
                                 SelectionMode="None">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Padding="10" BackgroundColor="LightGray" ColumnDefinitions="Auto,*">
-                                <!-- Imagen (manual) a la izquierda -->
-                                <Image Source="{Binding ImageSource}" 
-                                       WidthRequest="40" 
+					<CollectionView.ItemTemplate>
+						<DataTemplate>
+							<Grid Padding="10" BackgroundColor="LightGray" ColumnDefinitions="Auto,*">
+								<!-- Imagen (manual) a la izquierda -->
+								<Image Source="{Binding ImageSource}"
+                                       WidthRequest="40"
                                        HeightRequest="40"
-                                       VerticalOptions="Center" 
-                                       Grid.Column="0" 
+                                       VerticalOptions="Center"
+                                       Grid.Column="0"
                                        Margin="0,0,20,0"/>
-                                <!-- Nombre de la opción -->
-                                <Label Text="{Binding Name}"
+								<!-- Nombre de la opción -->
+								<Label Text="{Binding Name}"
                                        FontSize="Large"
                                        VerticalOptions="Center"
                                        Grid.Column="1" />
-                            </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </VerticalStackLayout>
-        </ScrollView>
-    </Grid>
+								<!-- TapGestureRecognizer para navegar a la página -->
+								<Grid.GestureRecognizers>
+									<TapGestureRecognizer Command="{Binding Source={x:Reference optionsList}, Path=BindingContext.OnOptionSelectedCommand}"
+                                                          CommandParameter="{Binding .}" />
+								</Grid.GestureRecognizers>
+							</Grid>
+						</DataTemplate>
+					</CollectionView.ItemTemplate>
+				</CollectionView>
+			</VerticalStackLayout>
+		</ScrollView>
+	</Grid>
 </ContentPage>

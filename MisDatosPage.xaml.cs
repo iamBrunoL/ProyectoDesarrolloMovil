@@ -33,8 +33,7 @@
         // Evento para el botón "Actualizar datos"
         private async void OnActualizarClicked(object sender, EventArgs e)
         {
-            // Lógica para actualizar datos
-            await DisplayAlert("Actualizar", "Funcionalidad de actualización no implementada.", "OK");
+            await Navigation.PushAsync(new ActualizacionMisDatosPage());
         }
 
         // Evento para el botón "Eliminar cuenta"

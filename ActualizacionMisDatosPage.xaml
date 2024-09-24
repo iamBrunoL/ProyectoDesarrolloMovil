@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoDesarrolloMovil.ActualizacionMisDatosPage"
+             BackgroundColor="White"
+             Padding="0">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Título "Mis datos" -->
+        <StackLayout VerticalOptions="Start" Grid.Row="0" Padding="20,10">
+            <Label Text="Mis datos" 
+                   FontSize="Large" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center"/>
+        </StackLayout>
+
+        <!-- ScrollView para permitir desplazamiento vertical -->
+        <ScrollView Grid.Row="1">
+            <StackLayout Padding="20">
+
+                <!-- Imagen de perfil y opción de seleccionar nueva imagen -->
+                <StackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="0,10">
+                    <Image Source="perfil.png"
+                           WidthRequest="100" 
+                           HeightRequest="100" 
+                           HorizontalOptions="Center"/>
+
+                    <Button Text="Seleccionar imagen de perfil"
+                            ImageSource="icono_imagen.png"
+                            HorizontalOptions="Center"
+                            Clicked="OnSeleccionarImagenClicked"
+                            Margin="0,10"/>
+                </StackLayout>
+
+                <!-- Formulario de actualización -->
+                <StackLayout Margin="0,20">
+                    <Label Text="Nombre completo:" FontSize="Medium"/>
+                    <Entry Text="{Binding NombreCompleto}" 
+                           FontSize="Medium" 
+                           Placeholder="Ingresa tu nombre completo" 
+                           TextChanged="OnNombreCompletoTextChanged"/>
+
+                    <Label Text="Nombre de usuario:" FontSize="Medium" Margin="0,10,0,0"/>
+                    <Entry Text="{Binding NombreUsuario}" 
+                           FontSize="Medium" 
+                           Placeholder="Ingresa tu nombre de usuario" 
+                           TextChanged="OnNombreUsuarioTextChanged"/>
+
+                    <Label Text="Correo:" FontSize="Medium" Margin="0,10,0,0"/>
+                    <Entry Text="{Binding Correo}" 
+                           FontSize="Medium" 
+                           Placeholder="Ingresa tu correo" 
+                           Keyboard="Email" />
+
+                    <!-- Género -->
+                    <Label Text="Género:" FontSize="Medium" Margin="0,10,0,0"/>
+                    <Picker
+                        ItemsSource="{Binding Generos}" 
+                        SelectedItem="{Binding GeneroSeleccionado}" />
+
+                    <!-- Edad -->
+                    <Label Text="Edad:" FontSize="Medium" Margin="0,10,0,0"/>
+                    <Slider Minimum="18" Maximum="100" 
+                            Value="{Binding EdadSeleccionada}" 
+                            ValueChanged="OnEdadSliderValueChanged"
+                            VerticalOptions="CenterAndExpand"/>
+                    <Label Text="{Binding EdadSeleccionada}" 
+                           FontSize="Medium" 
+                           VerticalOptions="CenterAndExpand"/>
+                    
+                    <!-- Domicilio -->
+                    <Label Text="Domicilio:" FontSize="Medium" Margin="0,10,0,0"/>
+                    <Entry Text="{Binding Domicilio}" 
+                           FontSize="Medium" 
+                           Placeholder="Ingresa tu domicilio" 
+                           TextChanged="OnDomicilioTextChanged"/>
+
+                    <!-- Teléfono -->
+                    <Label Text="Teléfono:" FontSize="Medium" Margin="0,10,0,0"/>
+                    <Entry Text="{Binding Telefono}" 
+                           FontSize="Medium" 
+                           Placeholder="Ingresa tu teléfono" 
+                           Keyboard="Telephone" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Botones de Actualizar y Cancelar en la parte inferior -->
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" Spacing="50" Padding="20" Grid.Row="2">
+            <Button Text="Actualizar datos" 
+                    ImageSource="icono_actualizar.png"
+                    HorizontalOptions="FillAndExpand" 
+                    Clicked="OnActualizarDatosClicked" />
+
+            <Button Text="Cancelar" 
+                    ImageSource="icono_cancelar.png"
+                    HorizontalOptions="FillAndExpand" 
+                    Clicked="OnCancelarClicked" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

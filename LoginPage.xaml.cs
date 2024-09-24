@@ -36,7 +36,6 @@ namespace ProyectoDesarrolloMovil
             }
 
             // Lógica para iniciar sesión
-            await DisplayAlert("Éxito", "Inicio de sesión exitoso.", "OK");
             await Navigation.PushAsync(new PanelControlPage());
         }
 
