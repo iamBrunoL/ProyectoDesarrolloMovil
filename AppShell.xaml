@@ -11,5 +11,8 @@
         Title="Home"
         ContentTemplate="{DataTemplate local:LoginPage}"
         Route="LoginPage" />
+    <ShellContent Title="Panel de Control" ContentTemplate="{DataTemplate local:PanelControlPage}" />
+    <ShellContent Title="Mis Datos" ContentTemplate="{DataTemplate local:MisDatosPage}" />
+
 
 </Shell>

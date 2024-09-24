@@ -13,7 +13,7 @@ namespace ProyectoDesarrolloMovil
         private void OnShowPasswordClicked(object sender, EventArgs e)
         {
             passwordEntry.IsPassword = !passwordEntry.IsPassword;
-            showPasswordIcon.Source = passwordEntry.IsPassword ? "eye_icon.png" : "eye_off_icon.png";
+            showPasswordIcon.Source = passwordEntry.IsPassword ? "mostrar.png" : "ocultar.png";
         }
 
         // Evento al hacer clic en el botón de Iniciar Sesión
@@ -37,6 +37,7 @@ namespace ProyectoDesarrolloMovil
 
             // Lógica para iniciar sesión
             await DisplayAlert("Éxito", "Inicio de sesión exitoso.", "OK");
+            await Navigation.PushAsync(new PanelControlPage());
         }
 
         // Función para validar la entrada de datos y evitar XSS

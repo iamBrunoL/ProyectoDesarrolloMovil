@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoDesarrolloMovil.MisDatosPage"
+             BackgroundColor="White"
+             Padding="0">
+
+    <Grid>
+        <!-- Layout principal -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>  <!-- Fila para el botón de regresar -->
+            <RowDefinition Height="*"/>      <!-- Fila para el contenido -->
+            <RowDefinition Height="Auto"/>  <!-- Fila para los botones de actualizar y eliminar -->
+        </Grid.RowDefinitions>
+
+        <!-- Icono de regresar fijo en la parte superior -->
+        <StackLayout Orientation="Horizontal" VerticalOptions="Start" Grid.Row="0" Padding="10,0">
+            <Image Source="regresar.png"
+                   WidthRequest="30" 
+                   HeightRequest="30"
+                   GestureRecognizers="{TapGestureRecognizer Tapped='OnBackClicked'}" />
+        </StackLayout>
+
+        <!-- ScrollView para permitir desplazamiento vertical en el contenido -->
+        <ScrollView Grid.Row="1">
+            <StackLayout Padding="20">
+                <!-- Imagen centrada -->
+                <Image Source="perfil.png"
+                       WidthRequest="100" 
+                       HeightRequest="100"
+                       HorizontalOptions="Center" 
+                       VerticalOptions="CenterAndExpand"
+                       Margin="0,10" /> <!-- Espacio entre la imagen y el texto -->
+
+                <!-- Título "Mis datos" -->
+                <Label Text="Mis datos" 
+                       FontSize="Large" 
+                       FontAttributes="Bold" 
+                       HorizontalOptions="Center" 
+                       Margin="0,10"/>
+
+                <!-- Formulario de visualización -->
+                <StackLayout Margin="0,20">
+                    <Label Text="Nombre completo:" FontSize="Medium"/>
+                    <Label Text="{Binding NombreCompleto}" FontSize="Medium" TextColor="Gray" HorizontalOptions="FillAndExpand"/>
+
+                    <Label Text="Nombre de usuario:" FontSize="Medium" Margin="0,10,0,0"/>
+                    <Label Text="{Binding NombreUsuario}" FontSize="Medium" TextColor="Gray" HorizontalOptions="FillAndExpand"/>
+
+                    <Label Text="Correo:" FontSize="Medium" Margin="0,10,0,0"/>
+                    <Label Text="{Binding Correo}" FontSize="Medium" TextColor="Gray" HorizontalOptions="FillAndExpand"/>
+
+                    <Label Text="Género:" FontSize="Medium" Margin="0,10,0,0"/>
+                    <Label Text="{Binding Genero}" FontSize="Medium" TextColor="Gray" HorizontalOptions="FillAndExpand"/>
+
+                    <Label Text="Domicilio:" FontSize="Medium" Margin="0,10,0,0"/>
+                    <Label Text="{Binding Domicilio}" FontSize="Medium" TextColor="Gray" HorizontalOptions="FillAndExpand"/>
+
+                    <Label Text="Edad:" FontSize="Medium" Margin="0,10,0,0"/>
+                    <Label Text="{Binding Edad}" FontSize="Medium" TextColor="Gray" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Opciones de actualización y eliminación fijas en la parte inferior -->
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" Spacing="50" Padding="20" Grid.Row="2">
+            <Button Text="Actualizar datos" 
+                    ImageSource="actualizar.png"
+                    HorizontalOptions="FillAndExpand" 
+                    Clicked="OnActualizarClicked" />
+
+            <Button Text="Eliminar cuenta" 
+                    ImageSource="eliminar.png"
+                    HorizontalOptions="FillAndExpand"
+                    Clicked="OnEliminarClicked" />
+        </StackLayout>
+    </Grid>
+</ContentPage>
