@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoDesarrolloMovil.DetalleEmpleadoPage"
+             BackgroundColor="White">
+
+    <Grid>
+        <!-- Definición de las filas para el grid superior, contenido y botones -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Fila para el botón de regresar -->
+            <RowDefinition Height="*"/>
+            <!-- Fila para el contenido con detalles -->
+            <RowDefinition Height="Auto"/>
+            <!-- Fila para los botones de actualizar y eliminar -->
+        </Grid.RowDefinitions>
+
+        <!-- Icono de regresar en la parte superior -->
+        <StackLayout Orientation="Horizontal" VerticalOptions="Start" Padding="10,0" Grid.Row="0">
+            <Image Source="regresar.png"
+           WidthRequest="30"
+           HeightRequest="30"
+           VerticalOptions="Center"
+           GestureRecognizers="{TapGestureRecognizer Tapped='OnRegresarClicked'}" />
+
+        </StackLayout>
+
+        <!-- ScrollView para el contenido con detalles del empleado -->
+        <ScrollView Grid.Row="1">
+            <StackLayout Padding="20">
+                <!-- Imagen del empleado -->
+                <Image Source="{Binding ImagenEmpleado}"
+                       WidthRequest="100" 
+                       HeightRequest="100"
+                       HorizontalOptions="Center" 
+                       VerticalOptions="CenterAndExpand"
+                       Margin="0,10" />
+                <!-- Espacio entre la imagen y el texto -->
+
+                <!-- Detalles del empleado -->
+                <Label Text="{Binding NombreEmpleado}" 
+                       FontSize="Large" 
+                       FontAttributes="Bold" 
+                       HorizontalOptions="Center" 
+                       Margin="0,10"/>
+
+                <StackLayout Margin="0,20">
+                    <Label Text="Teléfono:" FontSize="Medium"/>
+                    <Label Text="{Binding TelefonoEmpleado}" FontSize="Medium" TextColor="Gray" HorizontalOptions="FillAndExpand"/>
+
+                    <Label Text="Correo:" FontSize="Medium" Margin="0,10,0,0"/>
+                    <Label Text="{Binding CorreoEmpleado}" FontSize="Medium" TextColor="Gray" HorizontalOptions="FillAndExpand"/>
+
+                    <Label Text="Puesto:" FontSize="Medium" Margin="0,10,0,0"/>
+                    <Label Text="{Binding PuestoEmpleado}" FontSize="Medium" TextColor="Gray" HorizontalOptions="FillAndExpand"/>
+
+                    <Label Text="Fecha de Ingreso:" FontSize="Medium" Margin="0,10,0,0"/>
+                    <Label Text="{Binding FechaIngresoEmpleado}" FontSize="Medium" TextColor="Gray" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Botones de actualizar y eliminar en la parte inferior -->
+        <Grid Grid.Row="2" Padding="20" ColumnSpacing="50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Text="Actualizar datos" 
+                    ImageSource="actualizar.png"
+                    HorizontalOptions="FillAndExpand" 
+                    Clicked="OnActualizarDatosClicked" 
+                    Grid.Column="0"/>
+
+            <Button Text="Eliminar empleado" 
+                    ImageSource="eliminar.png"
+                    HorizontalOptions="FillAndExpand"
+                    Clicked="OnEliminarEmpleadoClicked"
+                    Grid.Column="1"/>
+        </Grid>
+    </Grid>
+</ContentPage>

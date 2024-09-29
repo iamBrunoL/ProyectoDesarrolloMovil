@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Windows.Input;
 
 namespace ProyectoDesarrolloMovil
@@ -11,7 +10,7 @@ namespace ProyectoDesarrolloMovil
         private ObservableCollection<Option> options = new ObservableCollection<Option>
         {
             new Option { ImageSource = "perfil.png", Name = "Mis datos", TargetPage = typeof(MisDatosPage) },
-            new Option { ImageSource = "empleado.png", Name = "Empleados" },
+            new Option { ImageSource = "empleado.png", Name = "Empleados", TargetPage = typeof(AdminEmpleadosPage) },
             new Option { ImageSource = "producto.png", Name = "Productos" },
             new Option { ImageSource = "proveedor.png", Name = "Proveedores" },
             new Option { ImageSource = "cliente.png", Name = "Clientes" }

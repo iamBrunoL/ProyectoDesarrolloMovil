@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoDesarrolloMovil.AdminEmpleadosPage"
+             BackgroundColor="White">
+
+    <Grid>
+        <!-- Definición de las filas: superior para el grid de regresar/agregar, contenido y opciones -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />  <!-- Fila para el botón de regresar y agregar empleados -->
+            <RowDefinition Height="*" />    <!-- Fila para el contenido -->
+        </Grid.RowDefinitions>
+
+        <!-- Icono de regresar y botón de agregar empleados en la parte superior -->
+        <StackLayout Orientation="Horizontal" VerticalOptions="Start" Padding="10,0" Grid.Row="0">
+            <Image Source="regresar.png"
+                   WidthRequest="30"
+                   HeightRequest="30"
+                   VerticalOptions="Center"
+                   GestureRecognizers="{TapGestureRecognizer Tapped='OnRegresarClicked'}" />
+
+            <ImageButton Source="icon_add_employee.png"
+                         Clicked="OnAgregarEmpleadoClicked"
+                         WidthRequest="40" HeightRequest="40"
+                         HorizontalOptions="End"
+                         VerticalOptions="Center"
+                         Margin="auto,0,0,0" />
+        </StackLayout>
+
+        <!-- ScrollView para el contenido -->
+        <ScrollView Grid.Row="1">
+            <StackLayout Padding="10">
+                <Label Text="Empleados"
+                       FontSize="Large"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center" />
+
+                <!-- Barra de búsqueda -->
+                <SearchBar Placeholder="Buscar empleado"
+                           TextChanged="OnBuscarEmpleadoTextChanged"
+                           HorizontalOptions="FillAndExpand" />
+
+                <!-- Lista de empleados en tarjetas -->
+                <CollectionView x:Name="EmpleadosCollectionView"
+                                ItemsSource="{Binding Empleados}"
+                                Margin="0,20,0,0">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="10" CornerRadius="10" HasShadow="True">
+                                <StackLayout>
+                                    <Image Source="{Binding ImagenEmpleado}"
+                                           WidthRequest="100" HeightRequest="100" />
+                                    <Label Text="{Binding NombreEmpleado}" FontSize="Medium" />
+                                    <Label Text="{Binding TelefonoEmpleado}" FontSize="Small" />
+                                    <Button Text="Ver detalles"
+                                            Clicked="OnVerDetallesClicked"
+                                            CommandParameter="{Binding IdEmpleado}" />
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
